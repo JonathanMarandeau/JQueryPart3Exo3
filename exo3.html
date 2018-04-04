@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Exercice 3</title>
+    <script src="../jquery-3.3.1.min.js"></script>
+  </head>
+  <body>
+    <form>
+      <input type="text" name="result" value="" id="result">
+      <button type="button" id="resultClick">Bon Chance</button>
+    </form>
+    <script>
+      $(function(){ //On lance la fonction une fois la page totalement chargé
+        var nbTry = 0;//Varibale pour compter les nombres de coups
+        $('#resultClick').click(function(){//on donne une fonction click au bouton
+          var goodNb = 77;//On définie le nombre a trouver
+          var randomNb = $('#result').val();//Variable des nombres saisies
+          if(isNaN(randomNb) || (randomNb>100) || (randomNb<0)){//Il faut que se soit uniquement des chiffres, pas supérieur a 100, pas inférieur a 0
+            alert('Saisissez un nombre entre 0 et 100');//boite de dialogue qui redis les consignes
+          }
+          else if(randomNb<goodNb){//si nb plus petit que le bon chiffre boite de dialogue qui dit plus
+            nbTry++;//C'est pour dire que l'on rajoute 1 à la variable nbTry pour chaque essaie non trouvé
+            alert('Plus');
+          }
+          else if(randomNb>goodNb){//si nb plus grand que le bon chiffre boite de dialogue qui dit moins
+            nbTry++;
+            alert('Moins');
+          }
+          else {
+            alert('Correct, vous avez trouvé en ' + Number(nbTry + 1) + ' essais');//Boite de dialogue qui affiche correct avec le nombre de tentative grace a Number(nbTry + 1)
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
